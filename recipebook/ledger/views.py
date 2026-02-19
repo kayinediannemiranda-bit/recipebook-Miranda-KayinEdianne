@@ -25,11 +25,11 @@ from .models import Recipe, Ingredient, RecipeIngredient
 #     return render(request, "ledger/ledger_indiv_list.html", ctx
 #     )
 
-class TaskListView(ListView):
+class RecipeListView(ListView):
     model = RecipeIngredient
-    template_name = 'ledger/ledger_home_list.html'
+    template_name = 'ledger/ledger_indiv_list.html'
 
-class TaskDetailView(DetailView):
+class RecipeDetailView(DetailView):
     model = RecipeIngredient
     template_name = 'ledger/ledger_indiv_list.html'
 
