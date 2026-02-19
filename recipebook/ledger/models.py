@@ -19,10 +19,10 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('recipe', args=[str(self.pk)])
 
-class RecipeIngridient(models.Model):
+class RecipeIngredient(models.Model):
     quantity = models.IntegerField()
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='ingredients')
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='recipes')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='recipe')
     
     class Meta: 
         ordering = ['recipe']
