@@ -14,14 +14,14 @@ class Recipe(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('recipe', args=[str(self.pk)])
+        return reverse('recipe_detail', args=[str(self.pk)])
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='ingredients')
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='recipe')
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='recipe')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
     
     class Meta: 
         ordering = ['recipe']
-        verbose_name = 'recipeingridient'
-        verbose_name_plural = 'recipeingridients'
+        verbose_name = 'recipeingredient'
+        verbose_name_plural = 'recipeingredients'

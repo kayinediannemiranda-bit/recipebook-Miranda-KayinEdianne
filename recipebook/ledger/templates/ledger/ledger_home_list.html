@@ -2,12 +2,11 @@
 
 {% block content%}
 
-    {% for recipe in recipes %}
+    {% for recipes in recipe_list %}
         <h3> 
-            {{recipe.name}}:
+            {{recipes.name}}: <a href=\recipe/{{recipes.pk}}>{{recipes.name}}</a>
         </h3>
-
-        <a href="{{recipe.link}}">{{recipe.name}}</a>
     {% endfor %}
 
 {% endblock %}
+

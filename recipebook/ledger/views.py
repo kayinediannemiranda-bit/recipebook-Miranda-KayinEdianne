@@ -5,31 +5,23 @@ from django.views.generic.detail import DetailView
 
 from .models import Recipe, Ingredient, RecipeIngredient
 
-# def recipe_list_view(request):
-#     recipe = RecipeIngredient.objects.all()
-#     ingredients = RecipeIngredient.objects.all()
-#     ctx = {
-#         'recipe': recipe,
-#         'ingredients': ingredients,
-#     }
-#     return render(request, "ledger/ledger_home_list.html", ctx
-#     )
+def recipe_list_view(request, id):
+    ctx = {
+        'recipe': Recipe.object.get(pk=pk)
+    }
+    return render(request, "ledger/ledger_home_list.html", ctx)
 
-# def recipe_view(request):
-#     recipe = RecipeIngredient.objects.all()
-#     ingredients = RecipeIngredient.objects.all()
-#     ctx = {
-#         'recipe': recipe,
-#         'ingredients': ingredients,
-#     }
-#     return render(request, "ledger/ledger_indiv_list.html", ctx
-#     )
+def recipe_view(request, id):
+    ctx = {
+        'recipe': Recipe.object.get(pk=pk)
+    }
+    return render(request, "ledger/ledger_indiv_list.html", ctx)
 
 class RecipeListView(ListView):
-    model = RecipeIngredient
-    template_name = 'ledger/ledger_indiv_list.html'
+    model = Recipe
+    template_name = 'ledger/ledger_home_list.html'
 
 class RecipeDetailView(DetailView):
-    model = RecipeIngredient
+    model = Recipe
     template_name = 'ledger/ledger_indiv_list.html'
 
