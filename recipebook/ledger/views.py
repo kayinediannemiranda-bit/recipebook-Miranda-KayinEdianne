@@ -7,13 +7,13 @@ from .models import Recipe, Ingredient, RecipeIngredient
 
 def recipe_list_view(request, id):
     ctx = {
-        'recipe': Recipe.object.get(pk=pk)
+        'recipe': Recipe.object.get(pk=id)
     }
     return render(request, "ledger/ledger_home_list.html", ctx)
 
 def recipe_view(request, id):
     ctx = {
-        'recipe': Recipe.object.get(pk=pk)
+        'recipe': Recipe.object.get(pk=id)
     }
     return render(request, "ledger/ledger_indiv_list.html", ctx)
 

@@ -4,7 +4,7 @@
     <body>
         {% for recipes in recipe_list %}
             <h3> 
-                {{recipes.name}}: <a href=\recipe/{{recipes.pk}}>{{recipes.name}}</a>
+                {{recipes.name}}: <a href="{{ recipes.get_absolute_url }}">{{recipes.name}}</a>
             </h3>
         {% endfor %}
     </body>
