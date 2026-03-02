@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView
@@ -21,7 +22,8 @@ class RecipeListView(ListView):
     model = Recipe
     template_name = 'ledger/ledger_home_list.html'
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/ledger_indiv_list.html'
+    redirect_field_name = 'ledger:recipe_list'
 
