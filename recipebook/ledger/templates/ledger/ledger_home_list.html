@@ -7,12 +7,20 @@
                 {{recipes.name}}: <a href= "{{ recipes.get_absolute_url }}">{{recipes.name}}</a>
             </h3>
         {% endfor %}
-    </body>
-    
-    <form method="POST" action="{% url 'logout' %}">
+
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Logout</button>
         </form>
+    {% else %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+     {% endif %}
+    </body>
 {% endblock %}
 
