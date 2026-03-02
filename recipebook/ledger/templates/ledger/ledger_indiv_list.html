@@ -1,9 +1,14 @@
 {% extends 'ledger/base_ledger.html' %}
 
 {% block content%}
+    <head>
+        <h2> 
+        Recipe Detail
+        </h2>
+    </head>
     <body>
-        <h3> {{recipe.name}}:</h3>
-        <h2>Made by: {{recipe.author.user.username}}</h2>
+        <h3>{{recipe.name}} made by: {{recipe.author.user.username}}
+        </h3>
         <ul>
             {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>

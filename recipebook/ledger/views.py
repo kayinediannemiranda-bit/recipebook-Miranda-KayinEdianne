@@ -21,6 +21,7 @@ def recipe_view(request, id):
 class RecipeListView(ListView):
     model = Recipe
     template_name = 'ledger/ledger_home_list.html'
+    
 
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe

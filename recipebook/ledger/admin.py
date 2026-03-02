@@ -8,11 +8,14 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
 
+
 class UserAdmin(BaseUserAdmin):
     inlines = [ProfileInline,]
 
+
 class RecipeInLine(admin.TabularInline):
     model = RecipeIngredient
+
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
