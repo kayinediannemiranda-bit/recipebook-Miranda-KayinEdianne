@@ -14,6 +14,9 @@
             <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
             {% endfor %}
         </ul>
+
+        <h3>Created on: {{recipe.created_on}}</h3>
+        <h3>Updated on: {{recipe.updated_on}}</h3>
     </body>
     
     <form method="POST" action="{% url 'logout' %}">
