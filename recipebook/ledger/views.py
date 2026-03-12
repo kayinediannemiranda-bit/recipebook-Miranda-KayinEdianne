@@ -5,8 +5,8 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
-from .models import Recipe, Ingredient, RecipeIngredient
-from .forms import RecipeForm
+from .models import Recipe, Ingredient, RecipeIngredient, RecipeImage
+from .forms import RecipeForm, RecipeImageForm
 
 def recipe_list_view(request, id):
     ctx = {
@@ -34,4 +34,9 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = RecipeIngredient
     template_name = 'ledger/ledger_form.html'
     form_class = RecipeForm
+
+class RecipeImageUpdateView(LoginRequiredMixin, CreateView):
+    model = RecipeImage
+    template_name = 'ledger/ledger_form_addimage.html'
+    form_class = RecipeImageForm
 
