@@ -1,10 +1,10 @@
 {% extends 'ledger/base_ledger.html' %}
 
 {% block content%}
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" value="Add note">
-    </formforms>
+        <input type="submit" value="Upload Image">
+    </form>
 
 {% endblock %}

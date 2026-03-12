@@ -8,17 +8,6 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Recipe, Ingredient, RecipeIngredient, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
 
-def recipe_list_view(request, id):
-    ctx = {
-        'recipe': Recipe.object.get(pk=id)
-    }
-    return render(request, "ledger/ledger_home_list.html", ctx)
-
-def recipe_view(request, id):
-    ctx = {
-        'recipe': Recipe.object.get(pk=id)
-    }
-    return render(request, "ledger/ledger_indiv_list.html", ctx)
 
 class RecipeListView(ListView):
     model = Recipe
@@ -30,12 +19,14 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     template_name = 'ledger/ledger_indiv_list.html'
     redirect_field_name = 'ledger:recipe_list'
 
+
 class RecipeCreateView(LoginRequiredMixin, CreateView):
-    model = RecipeIngredient
+    model = Recipe
     template_name = 'ledger/ledger_form.html'
     form_class = RecipeForm
 
-class RecipeImageUpdateView(LoginRequiredMixin, CreateView):
+
+class RecipeAddImageView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     template_name = 'ledger/ledger_form_addimage.html'
     form_class = RecipeImageForm

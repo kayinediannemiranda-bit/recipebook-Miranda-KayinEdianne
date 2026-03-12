@@ -1,14 +1,23 @@
 {% extends 'ledger/base_ledger.html' %}
 
 {% block content%}
-    <head>
-        <h2> 
-        Recipe Detail
-        </h2>
-    </head>
+    {% load static %}
+        <html>
+        <head>
+            <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+            <h2> 
+            Recipe Detail
+            </h2>
+        </head>
+        
     <body>
         <h3>{{recipe.name}} made by: {{recipe.author.user.username}}
         </h3>
+        {% if object.recipe_image %}
+            {% for img in recipe.recipe_image.all %}
+            <img src="{{ img.image.url }}" alt="{{ img.description }}">
+            {% endfor %}
+        {% endif %}
         <ul>
             {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
@@ -24,4 +33,5 @@
             {{ form.as_p }}
             <button type="submit">Logout</button>
         </form>
+        </html>
 {% endblock %}
