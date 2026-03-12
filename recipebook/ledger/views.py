@@ -30,7 +30,7 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     template_name = 'ledger/ledger_indiv_list.html'
     redirect_field_name = 'ledger:recipe_list'
 
-class RecipeCreateView(CreateView):
+class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = RecipeIngredient
     template_name = 'ledger/ledger_form.html'
     form_class = RecipeForm
