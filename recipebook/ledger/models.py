@@ -38,6 +38,12 @@ class Recipe(models.Model):
         return reverse('ledger:recipe_detail', args=[str(self.id)])#try self.id and 'ledger:recipe_detail'
 
 
+class RecipeImage(models.Model):
+    #image = models.ImageField()
+    description = models.TextField(max_length=255)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name= 'recipe_image')
+
+
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='recipe')
