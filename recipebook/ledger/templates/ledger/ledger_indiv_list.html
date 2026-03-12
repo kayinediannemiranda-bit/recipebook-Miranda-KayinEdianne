@@ -27,6 +27,8 @@
         <h3>Created on: {{recipe.created_on}}</h3>
         <h3>Updated on: {{recipe.updated_on}}</h3>
     </body>
+
+    <a href= "{% url 'ledger:recipe_add_image' recipe.id %}">Add image for {{recipe.name}}</a>
     
     <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}

@@ -35,7 +35,7 @@ class Recipe(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('ledger:recipe_detail', args=[str(self.id)])#try self.id and 'ledger:recipe_detail'
+        return reverse('ledger:recipe_detail', args=[str(self.id)])
 
 
 class RecipeImage(models.Model):
@@ -44,7 +44,7 @@ class RecipeImage(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name= 'recipe_image')
 
     def get_absolute_url(self):
-        return reverse('ledger:recipe_detail', args=[str(self.recipe.id)])
+        return reverse('ledger:recipe_add_image', args=[str(self.id)])
 
 
 class RecipeIngredient(models.Model):

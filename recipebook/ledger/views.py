@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -30,4 +31,7 @@ class RecipeAddImageView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     template_name = 'ledger/ledger_form_addimage.html'
     form_class = RecipeImageForm
+
+    def get_success_url(self):
+        return reverse('ledger:recipe_detail', kwargs={'pk': self.object.recipe.id})
 
