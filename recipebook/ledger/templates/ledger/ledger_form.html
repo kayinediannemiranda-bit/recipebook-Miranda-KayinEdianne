@@ -1,0 +1,10 @@
+{% extends 'ledger/base_ledger.html' %}
+
+{% block content%}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Add note">
+    </formforms>
+
+{% endblock %}

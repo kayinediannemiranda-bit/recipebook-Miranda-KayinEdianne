@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .models import Recipe, Ingredient, RecipeIngredient
+from .forms import RecipeForm
 
 def recipe_list_view(request, id):
     ctx = {
@@ -27,4 +29,9 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/ledger_indiv_list.html'
     redirect_field_name = 'ledger:recipe_list'
+
+class RecipeCreateView(CreateView):
+    model = RecipeIngredient
+    template_name = 'ledger/ledger_form.html'
+    form_class = RecipeForm
 
